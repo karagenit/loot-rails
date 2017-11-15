@@ -1,7 +1,11 @@
-function masterNew() {
+function clickMasterNew() {
     var name = $("#master-new-name")[0].value;
     var qty = $("#master-new-qty")[0].value;
     var value = $("#master-new-value")[0].value;
+    masterNew(name, qty, value);
+}
+
+function masterNew(name, qty, value) {
     var table = $("#master")[0];
 
     if (name == false || qty == false || value == false) {
@@ -33,10 +37,16 @@ function removeRow(context) {
     $(context).closest('tr').remove();
 }
 
-function cashNew() {
+function clickCashNew() {
     var note = $("#cash-new-note")[0].value;
     var qty = $("#cash-new-qty")[0].value;
     var value = $("#cash-new-value")[0].value;
+
+    cashNew(note, qty, value);
+}
+
+
+function cashNew(note, qty, value) {
     var table = $("#cash")[0];
 
     if (note == false || qty == false || value == false) {
