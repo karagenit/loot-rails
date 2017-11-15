@@ -177,7 +177,7 @@ function updateBudgets() {
 
     if(playerCnt > 0) {
         for(var i = 2; i < players.length - 1; i++) {
-            players[i].cells[1].innerHTML = (total / playerCnt);
+            players[i].cells[1].innerHTML = Math.round(total / playerCnt);
         }
     }
 
