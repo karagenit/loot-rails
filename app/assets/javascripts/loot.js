@@ -142,15 +142,15 @@ function cashDelete(context) {
 }
 
 function updateBudgets() {
-    var total = 0;
-
     var cashRows = $("#cash")[0].rows
     var itemRows = $("#master")[0].rows
     var players = $("#players")[0].rows
     var playerCnt = players.length - 3;
 
+    var totals = new Array(players.length).fill(0);
+
     for(var i = 1; i < cashRows.length - 1; i++) {
-        total += cashRows[i].cells[1].innerHTML * cashRows[i].cells[2].innerHTML
+        totals[1] += cashRows[i].cells[1].innerHTML * cashRows[i].cells[2].innerHTML
     }
 
     for(var i = 1; i < itemRows.length - 1; i++) {
@@ -158,19 +158,19 @@ function updateBudgets() {
         var select = $(item.cells[3]).children('select')[0];
         var index = select.selectedIndex
         var selected = select.options[index]
-        console.log(selected.value)
-        if(selected.value == 1) {
-            console.log("that's a seller!")
-            total += item.cells[1].innerHTML * item.cells[2].innerHTML;
-        }
+        totals[selected.value] += item.cells[1].innerHTML * item.cells[2].innerHTML;
     }
 
-    players[1].cells[1].innerHTML = total;
+    players[1].cells[1].innerHTML = totals[1];
+
+    var individual = Math.round(totals[1] / playerCnt);
+
+    console.log(totals)
 
     if(playerCnt > 0) {
         for(var i = 2; i < players.length - 1; i++) {
-            players[i].cells[1].innerHTML = Math.round(total / playerCnt);
+            players[i].cells[1].innerHTML = individual;
+            players[i].cells[2].innerHTML = individual - totals[i];
         }
     }
-
-} //TODO update these on new/delete item w/ 'sell'
+}
