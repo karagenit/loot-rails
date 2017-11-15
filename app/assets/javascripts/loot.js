@@ -55,7 +55,18 @@ function cashNew() {
     cactions.innerHTML = `
         <span class="input-group">
             <button type="button" class="btn btn-outline-danger btn-table"
-                onclick="removeRow(this)">Delete</button>
+                onclick="removeRow(this);updateCashTotal()">Delete</button>
         </span>
     `;
+
+    updateCashTotal();
+}
+
+function updateCashTotal() {
+    total = 0;
+    rows = $("#cash")[0].rows
+    for(var i = 1; i < rows.length - 1; i++) {
+        total += rows[i].cells[1].innerHTML * rows[i].cells[2].innerHTML
+    }
+    $("#cash-total")[0].innerHTML = total
 }
