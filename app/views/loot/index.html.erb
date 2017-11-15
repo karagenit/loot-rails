@@ -11,6 +11,7 @@
                 <th>Name</th>
                 <th>Qty.</th>
                 <th>Value</th>
+                <th>Status</th>
                 <th>Actions</th>
                 <!-- Take, Sell, Delete, Edit -->
             </tr>
@@ -27,6 +28,7 @@
                     <input type="number" class="form-control form-table"
                         id="master-new-value" placeholder="Value">
                 </td>
+                <td></td>
                 <td>
                     <button type="button" class="btn btn-outline-success"
                         onclick="clickMasterNew()">New</button>
@@ -64,21 +66,6 @@
                     <button type="button" class="btn btn-outline-success"
                         onclick="clickCashNew()">New</button>
                 </td>
-            </tr>
-        </table>
-   </div>
-</div>
-
-<div class="card">
-    <div class="card-body">
-        <h3 class="card-title">Sold Items</h2>
-
-        <table id="sold" class="table">
-            <tr>
-                <th>Name</th>
-                <th>Qty</th>
-                <th>Value</th>
-                <th>Actions</th>
             </tr>
         </table>
    </div>

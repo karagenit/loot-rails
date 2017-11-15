@@ -17,21 +17,43 @@ function masterNew(name, qty, value) {
     var cname = row.insertCell(0);
     var cqty = row.insertCell(1);
     var cvalue = row.insertCell(2);
-    var cactions = row.insertCell(3);
+    var cstatus = row.insertCell(3);
+    var cactions = row.insertCell(4);
     cname.innerHTML = name;
     cqty.innerHTML = qty;
     cvalue.innerHTML = value;
+    cstatus.appendChild(getStatusDropdown());
     cactions.innerHTML = `
         <span class="input-group">
-            <button type="button" class="btn btn-outline-primary btn-table"
-                onclick="masterTake(${index})">Take</button>
-            <button type="button" class="btn btn-outline-warning btn-table"
-                onclick="masterSell(${index})">Sell</button>
             <button type="button" class="btn btn-outline-danger btn-table"
                 onclick="removeRow(this)">Delete</button>
         </span>
     `;
 }
+
+function getStatusDropdown() {
+    var select = document.createElement("select")
+
+    var tbd = document.createElement("option")
+    tbd.text = "TBD";
+    tbd.value = 0;
+    select.add(tbd);
+
+    var sell = document.createElement("option")
+    sell.text = "Sell";
+    sell.value = 1;
+    select.add(sell)
+
+    var players = $("#players")[0].rows
+    for(var i = 2; i < players.length - 1; i++) {
+        var opt = document.createElement("option")
+        opt.text = players[i].cells[0].innerHTML
+        opt.value = i
+        select.add(opt)
+    }
+
+    return select;
+} //TODO update all of these on player create/destroy
 
 function clickPlayerNew() {
     var name =$("#player-new-name")[0].value
@@ -181,4 +203,4 @@ function updateBudgets() {
         }
     }
 
-} //also on new/delete player, or take/untake items
+} //TODO update these on new/delete player, or item state change
