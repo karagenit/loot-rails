@@ -8,7 +8,7 @@ function masterNew() {
         return;
     }
 
-    var index = table.rows.length
+    var index = table.rows.length - 1;
     var row = table.insertRow(index);
     var cname = row.insertCell(0);
     var cqty = row.insertCell(1);

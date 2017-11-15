@@ -2,23 +2,40 @@
     <a class="navbar-brand" href="#">Loot</a>
 </nav>
 
-<h2>Master Item List</h2>
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Master Item List</h2>
 
-<table id="master" class="table">
-    <tr>
-        <th>Name</th>
-        <th>Qty.</th>
-        <th>Value</th>
-        <th>Actions</th>
-        <!-- Take, Sell, Delete, Edit -->
-    </tr>
-</table>
-<form class="form-inline">
-    <input type="text" class="form-control mr-sm-2" id="master-new-name" placeholder="Item Name">
-    <input type="number" class="form-control mr-sm-2" id="master-new-qty" placeholder="Quantity">
-    <input type="number" class="form-control mr-sm-2" id="master-new-value" placeholder="Value">
-    <button type="button" class="btn btn-success" onclick="masterNew()">New</button>
-</form>
+        <table id="master" class="table">
+            <tr>
+                <th>Name</th>
+                <th>Qty.</th>
+                <th>Value</th>
+                <th>Actions</th>
+                <!-- Take, Sell, Delete, Edit -->
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" class="form-control"
+                        id="master-new-name" placeholder="Item Name">
+                </td>
+                <td>
+                    <input type="number" class="form-control"
+                        id="master-new-qty" placeholder="Quantity">
+                </td>
+                <td>
+                    <input type="number" class="form-control"
+                        id="master-new-value" placeholder="Value">
+                </td>
+                <td>
+                    <button type="button" class="btn btn-outline-success"
+                        onclick="masterNew()">New</button>
+                </td>
+            </tr>
+        </table>
+   </div>
+</div>
+
 
 <h2>Cash Accounts</h2>
 
