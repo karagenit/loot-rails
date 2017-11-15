@@ -71,6 +71,15 @@ function masterSell(index) {
     master.deleteRow(index)
 }
 
+function soldUnsell(index) {
+    var row = $("#sold")[0].rows[index]
+    var name = row.cells[0].innerHTML
+    var qty = row.cells[1].innerHTML
+    var value = row.cells[2].innerHTML
+    masterNew(name, qty, value)
+    sold.deleteRow(index)
+}
+
 function soldNew(name, qty, value) {
     var table = $("#sold")[0]
 
@@ -86,11 +95,12 @@ function soldNew(name, qty, value) {
     cactions.innerHTML = `
         <span class="input-group">
             <button type="button" class="btn btn-outline-warning btn-table"
-                onclick="">Unsell</button> <!-- FIXME -->
+                onclick="soldUnsell(${index})">Unsell</button>
             <button type="button" class="btn btn-outline-danger btn-table"
                 onclick="removeRow(this)">Delete</button>
         </span>
     `;
+    //TODO update totals
 }
 
 function removeRow(context) {
