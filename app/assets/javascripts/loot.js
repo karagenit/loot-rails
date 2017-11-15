@@ -42,7 +42,7 @@ function cashNew() {
         return;
     }
 
-    var index = table.rows.length
+    var index = table.rows.length - 1;
     var row = table.insertRow(index);
     var cnote = row.insertCell(0);
     var cvalue = row.insertCell(1);

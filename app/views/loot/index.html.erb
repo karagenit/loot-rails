@@ -36,17 +36,30 @@
    </div>
 </div>
 
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Cash Accounts</h2>
 
-<h2>Cash Accounts</h2>
-
-<table id="cash" class="table">
-    <tr>
-        <th>Note</th>
-        <th>Value</th>
-    </tr>
-</table>
-<form class="form-inline">
-    <input type="text" class="form-control mr-sm-2" id="cash-new-note" placeholder="Note">
-    <input type="number" class="form-control mr-sm-2" id="cash-new-value" placeholder="Value">
-    <button type="button" class="btn btn-success" onclick="cashNew()">New</button>
-</form>
+        <table id="cash" class="table">
+            <tr>
+                <th>Note</th>
+                <th>Value</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" class="form-control"
+                        id="cash-new-note" placeholder="Note">
+                </td>
+                <td>
+                    <input type="number" class="form-control"
+                        id="cash-new-value" placeholder="Value">
+                </td> <!-- TODO quantity -->
+                <td>
+                    <button type="button" class="btn btn-outline-success"
+                        onclick="cashNew()">New</button>
+                </td>
+            </tr>
+        </table>
+   </div>
+</div>
