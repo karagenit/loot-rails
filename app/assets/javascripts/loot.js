@@ -33,6 +33,37 @@ function masterNew(name, qty, value) {
     `;
 }
 
+function masterSell(index) {
+    var row = $("#master")[0].rows[index]
+    var name = row.cells[0].innerHTML
+    var qty = row.cells[1].innerHTML
+    var value = row.cells[2].innerHTML
+    soldNew(name, qty, value)
+    master.deleteRow(index)
+}
+
+function soldNew(name, qty, value) {
+    var table = $("#sold")[0]
+
+    var index = table.rows.length;
+    var row = table.insertRow(index);
+    var cname = row.insertCell(0);
+    var cqty = row.insertCell(1);
+    var cvalue = row.insertCell(2);
+    var cactions = row.insertCell(3);
+    cname.innerHTML = name;
+    cqty.innerHTML = qty;
+    cvalue.innerHTML = value;
+    cactions.innerHTML = `
+        <span class="input-group">
+            <button type="button" class="btn btn-outline-warning btn-table"
+                onclick="">Unsell</button> <!-- FIXME -->
+            <button type="button" class="btn btn-outline-danger btn-table"
+                onclick="removeRow(this)">Delete</button>
+        </span>
+    `;
+}
+
 function removeRow(context) {
     $(context).closest('tr').remove();
 }
