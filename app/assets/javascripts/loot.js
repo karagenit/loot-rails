@@ -158,12 +158,12 @@ function cashDelete(context) {
 }
 
 function updateBudgets() {
-    var players = $("#players")[0].rows.length - 3;
     var total = 0;
 
     var cashRows = $("#cash")[0].rows
     var soldRows = $("#sold")[0].rows
     var players = $("#players")[0].rows
+    var playerCnt = players.length - 3;
 
     for(var i = 1; i < cashRows.length - 1; i++) {
         total += cashRows[i].cells[1].innerHTML * cashRows[i].cells[2].innerHTML
@@ -175,6 +175,10 @@ function updateBudgets() {
 
     players[1].cells[1].innerHTML = total;
 
-    //TODO for each player
+    if(playerCnt > 0) {
+        for(var i = 2; i < players.length - 1; i++) {
+            players[i].cells[1].innerHTML = (total / playerCnt);
+        }
+    }
 
 } //also on new/delete player, or take/untake items
