@@ -13,7 +13,7 @@ function masterNew() {
     var cname = row.insertCell(0);
     var cqty = row.insertCell(1);
     var cvalue = row.insertCell(2);
-    var cactions = row.insertCell(3); //TODO add buttons to this
+    var cactions = row.insertCell(3);
     cname.innerHTML = name;
     cqty.innerHTML = qty;
     cvalue.innerHTML = value;
@@ -31,4 +31,28 @@ function masterNew() {
 
 function removeRow(context) {
     $(context).closest('tr').remove();
+}
+
+function cashNew() {
+    var note = $("#cash-new-note")[0].value;
+    var value = $("#cash-new-value")[0].value;
+    var table = $("#cash")[0];
+
+    if (note == false || value == false) {
+        return;
+    }
+
+    var index = table.rows.length
+    var row = table.insertRow(index);
+    var cnote = row.insertCell(0);
+    var cvalue = row.insertCell(1);
+    var cactions = row.insertCell(2);
+    cnote.innerHTML = note;
+    cvalue.innerHTML = value;
+    cactions.innerHTML = `
+        <span class="input-group">
+            <button type="button" class="btn btn-outline-danger btn-table"
+                onclick="removeRow(this)">Delete</button>
+        </span>
+    `;
 }
