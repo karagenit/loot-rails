@@ -24,7 +24,11 @@ function masterNew() {
             <button type="button" class="btn btn-outline-warning btn-table"
                 onclick="masterSell(${index})">Sell</button>
             <button type="button" class="btn btn-outline-danger btn-table"
-                onclick="masterDelete(${index})">Delete</button>
+                onclick="removeRow(this)">Delete</button>
         </span>
     `;
+}
+
+function removeRow(context) {
+    $(context).closest('tr').remove();
 }
