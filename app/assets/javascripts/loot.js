@@ -33,6 +33,35 @@ function masterNew(name, qty, value) {
     `;
 }
 
+function clickPlayerNew() {
+    var name =$("#player-new-name")[0].value
+    playerNew(name);
+}
+
+function playerNew(name) {
+    var table = $("#players")[0];
+
+    if (name == false) {
+        return;
+    }
+
+    var index = table.rows.length - 1;
+    var row = table.insertRow(index);
+    var cname = row.insertCell(0);
+    var cbudTotal = row.insertCell(1);
+    var cbudCurrent = row.insertCell(2);
+    var cactions = row.insertCell(3);
+    cname.innerHTML = name;
+    cbudTotal.innerHTML = 0;
+    cbudCurrent.innerHTML = 0;
+    cactions.innerHTML = `
+        <span class="input-group">
+            <button type="button" class="btn btn-outline-danger btn-table"
+                onclick="removeRow(this)">Delete</button>
+        </span>
+    `;
+}
+
 function masterSell(index) {
     var row = $("#master")[0].rows[index]
     var name = row.cells[0].innerHTML
