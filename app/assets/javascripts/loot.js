@@ -77,7 +77,17 @@ function soldUnsell(index) {
     var qty = row.cells[1].innerHTML
     var value = row.cells[2].innerHTML
     masterNew(name, qty, value)
-    sold.deleteRow(index)
+    soldDelete(index)
+}
+
+function soldDelete(index) {
+    sold.deleteRow(index);
+    updateBudgets();
+}
+
+function soldDeleteSelf(context) {
+    removeRow(context);
+    updateBudgets();
 }
 
 function soldNew(name, qty, value) {
@@ -97,10 +107,10 @@ function soldNew(name, qty, value) {
             <button type="button" class="btn btn-outline-warning btn-table"
                 onclick="soldUnsell(${index})">Unsell</button>
             <button type="button" class="btn btn-outline-danger btn-table"
-                onclick="removeRow(this)">Delete</button>
+                onclick="soldDeleteSelf(this)">Delete</button>
         </span>
     `;
-    //TODO update totals
+    updateBudgets();
 }
 
 function removeRow(context) {
@@ -135,18 +145,18 @@ function cashNew(note, qty, value) {
     cactions.innerHTML = `
         <span class="input-group">
             <button type="button" class="btn btn-outline-danger btn-table"
-                onclick="removeRow(this);updateCashTotal()">Delete</button>
+                onclick="cashDelete(this)">Delete</button>
         </span>
     `;
 
-    updateCashTotal();
+    updateBudgets();
 }
 
-function updateCashTotal() {
-    total = 0;
-    rows = $("#cash")[0].rows
-    for(var i = 1; i < rows.length - 1; i++) {
-        total += rows[i].cells[1].innerHTML * rows[i].cells[2].innerHTML
-    }
-    $("#cash-total")[0].innerHTML = total
+function cashDelete(context) {
+    removeRow(context);
+    updateBudgets();
 }
+
+function updateBudgets() {
+    console.log('ub')
+} //also on new/delete player, or take/untake items
