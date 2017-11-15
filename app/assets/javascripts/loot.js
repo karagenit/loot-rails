@@ -56,7 +56,7 @@ function getStatusDropdown() {
 } //TODO update all of these on player create/destroy
 
 function clickPlayerNew() {
-    var name =$("#player-new-name")[0].value
+    var name = $("#player-new-name")[0].value
     playerNew(name);
 }
 
@@ -79,9 +79,15 @@ function playerNew(name) {
     cactions.innerHTML = `
         <span class="input-group">
             <button type="button" class="btn btn-outline-danger btn-table"
-                onclick="removeRow(this)">Delete</button>
+                onclick="playerDelete(this)">Delete</button>
         </span>
     `;
+    updateBudgets();
+}
+
+function playerDelete(context) {
+    removeRow(context)
+    updateBudgets();
 }
 
 function removeRow(context) {
@@ -159,4 +165,4 @@ function updateBudgets() {
         }
     }
 
-} //TODO update these on new/delete player, or item state change, or new/delete item w/ 'sell'
+} //TODO update these on item state change, or new/delete item w/ 'sell'
