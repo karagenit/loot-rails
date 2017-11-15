@@ -35,19 +35,22 @@ function removeRow(context) {
 
 function cashNew() {
     var note = $("#cash-new-note")[0].value;
+    var qty = $("#cash-new-qty")[0].value;
     var value = $("#cash-new-value")[0].value;
     var table = $("#cash")[0];
 
-    if (note == false || value == false) {
+    if (note == false || qty == false || value == false) {
         return;
     }
 
     var index = table.rows.length - 1;
     var row = table.insertRow(index);
     var cnote = row.insertCell(0);
-    var cvalue = row.insertCell(1);
-    var cactions = row.insertCell(2);
+    var cqty = row.insertCell(1);
+    var cvalue = row.insertCell(2);
+    var cactions = row.insertCell(3);
     cnote.innerHTML = note;
+    cqty.innerHTML = qty;
     cvalue.innerHTML = value;
     cactions.innerHTML = `
         <span class="input-group">

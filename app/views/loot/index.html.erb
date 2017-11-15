@@ -43,6 +43,7 @@
         <table id="cash" class="table">
             <tr>
                 <th>Note</th>
+                <th>Qty</th>
                 <th>Value</th>
                 <th>Actions</th>
             </tr>
@@ -53,13 +54,20 @@
                 </td>
                 <td>
                     <input type="number" class="form-control form-table"
+                        id="cash-new-qty" placeholder="Quantity">
+                </td>
+                <td>
+                    <input type="number" class="form-control form-table"
                         id="cash-new-value" placeholder="Value">
-                </td> <!-- TODO quantity -->
+                </td>
                 <td>
                     <button type="button" class="btn btn-outline-success"
                         onclick="cashNew()">New</button>
                 </td>
             </tr>
         </table>
+        <p class="card-text">
+            <b>Total: </b><span id="cash-total">0</span>
+        </p>
    </div>
 </div>
