@@ -3,6 +3,11 @@ function masterNew() {
     var qty = $("#master-new-qty")[0].value;
     var value = $("#master-new-value")[0].value;
     var table = $("#master")[0];
+
+    if (name == false || qty == false || value == false) {
+        return;
+    }
+
     var row = table.insertRow(table.rows.length);
     var cname = row.insertCell(0);
     var cqty = row.insertCell(1);
