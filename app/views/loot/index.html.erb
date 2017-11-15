@@ -13,11 +13,23 @@
         <!-- Take, Sell, Delete, Edit -->
     </tr>
 </table>
-
-
 <form class="form-inline">
     <input type="text" class="form-control mr-sm-2" id="master-new-name" placeholder="Item Name">
     <input type="number" class="form-control mr-sm-2" id="master-new-qty" placeholder="Quantity">
     <input type="number" class="form-control mr-sm-2" id="master-new-value" placeholder="Value">
     <button type="button" class="btn btn-success" onclick="masterNew()">New</button>
+</form>
+
+<h2>Cash Accounts</h2>
+
+<table id="cash" class="table">
+    <tr>
+        <th>Note</th>
+        <th>Value</th>
+    </tr>
+</table>
+<form class="form-inline">
+    <input type="text" class="form-control mr-sm-2" id="cash-new-name" placeholder="Note">
+    <input type="number" class="form-control mr-sm-2" id="cash-new-value" placeholder="Value">
+    <button type="button" class="btn btn-success" onclick="cashNew()">New</button>
 </form>
