@@ -34,6 +34,8 @@ function masterNew(name, qty, value) {
 function getStatusDropdown() {
     var select = document.createElement("select")
 
+    select.setAttribute("onchange", "updateBudgets()");
+
     var tbd = document.createElement("option")
     tbd.text = "TBD";
     tbd.value = 0;
@@ -165,4 +167,4 @@ function updateBudgets() {
         }
     }
 
-} //TODO update these on item state change, or new/delete item w/ 'sell'
+} //TODO update these on new/delete item w/ 'sell'
