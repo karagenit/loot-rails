@@ -19,11 +19,11 @@ function masterNew() {
     cvalue.innerHTML = value;
     cactions.innerHTML = `
         <span class="input-group">
-            <button type="button" class="btn btn-primary btn-table"
+            <button type="button" class="btn btn-outline-primary btn-table"
                 onclick="masterTake(${index})">Take</button>
-            <button type="button" class="btn btn-warning btn-table"
+            <button type="button" class="btn btn-outline-warning btn-table"
                 onclick="masterSell(${index})">Sell</button>
-            <button type="button" class="btn btn-danger btn-table"
+            <button type="button" class="btn btn-outline-danger btn-table"
                 onclick="masterDelete(${index})">Delete</button>
         </span>
     `;
