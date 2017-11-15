@@ -84,57 +84,6 @@ function playerNew(name) {
     `;
 }
 
-function masterSell(index) {
-    var row = $("#master")[0].rows[index]
-    var name = row.cells[0].innerHTML
-    var qty = row.cells[1].innerHTML
-    var value = row.cells[2].innerHTML
-    soldNew(name, qty, value)
-    master.deleteRow(index)
-}
-
-function soldUnsell(index) {
-    var row = $("#sold")[0].rows[index]
-    var name = row.cells[0].innerHTML
-    var qty = row.cells[1].innerHTML
-    var value = row.cells[2].innerHTML
-    masterNew(name, qty, value)
-    soldDelete(index)
-}
-
-function soldDelete(index) {
-    sold.deleteRow(index);
-    updateBudgets();
-}
-
-function soldDeleteSelf(context) {
-    removeRow(context);
-    updateBudgets();
-}
-
-function soldNew(name, qty, value) {
-    var table = $("#sold")[0]
-
-    var index = table.rows.length;
-    var row = table.insertRow(index);
-    var cname = row.insertCell(0);
-    var cqty = row.insertCell(1);
-    var cvalue = row.insertCell(2);
-    var cactions = row.insertCell(3);
-    cname.innerHTML = name;
-    cqty.innerHTML = qty;
-    cvalue.innerHTML = value;
-    cactions.innerHTML = `
-        <span class="input-group">
-            <button type="button" class="btn btn-outline-warning btn-table"
-                onclick="soldUnsell(${index})">Unsell</button>
-            <button type="button" class="btn btn-outline-danger btn-table"
-                onclick="soldDeleteSelf(this)">Delete</button>
-        </span>
-    `;
-    updateBudgets();
-}
-
 function removeRow(context) {
     $(context).closest('tr').remove();
 }
@@ -146,7 +95,6 @@ function clickCashNew() {
 
     cashNew(note, qty, value);
 }
-
 
 function cashNew(note, qty, value) {
     var table = $("#cash")[0];
@@ -183,7 +131,7 @@ function updateBudgets() {
     var total = 0;
 
     var cashRows = $("#cash")[0].rows
-    var soldRows = $("#sold")[0].rows
+    var itemRows = $("#master")[0].rows
     var players = $("#players")[0].rows
     var playerCnt = players.length - 3;
 
@@ -191,8 +139,16 @@ function updateBudgets() {
         total += cashRows[i].cells[1].innerHTML * cashRows[i].cells[2].innerHTML
     }
 
-    for(var i = 1; i < soldRows.length; i++) {
-        total += soldRows[i].cells[1].innerHTML * soldRows[i].cells[2].innerHTML
+    for(var i = 1; i < itemRows.length - 1; i++) {
+        var item = itemRows[i]
+        var select = $(item.cells[3]).children('select')[0];
+        var index = select.selectedIndex
+        var selected = select.options[index]
+        console.log(selected.value)
+        if(selected.value == 1) {
+            console.log("that's a seller!")
+            total += item.cells[1].innerHTML * item.cells[2].innerHTML;
+        }
     }
 
     players[1].cells[1].innerHTML = total;
@@ -203,4 +159,4 @@ function updateBudgets() {
         }
     }
 
-} //TODO update these on new/delete player, or item state change
+} //TODO update these on new/delete player, or item state change, or new/delete item w/ 'sell'
