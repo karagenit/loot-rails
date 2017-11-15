@@ -158,5 +158,23 @@ function cashDelete(context) {
 }
 
 function updateBudgets() {
-    console.log('ub')
+    var players = $("#players")[0].rows.length - 3;
+    var total = 0;
+
+    var cashRows = $("#cash")[0].rows
+    var soldRows = $("#sold")[0].rows
+    var players = $("#players")[0].rows
+
+    for(var i = 1; i < cashRows.length - 1; i++) {
+        total += cashRows[i].cells[1].innerHTML * cashRows[i].cells[2].innerHTML
+    }
+
+    for(var i = 1; i < soldRows.length; i++) {
+        total += soldRows[i].cells[1].innerHTML * soldRows[i].cells[2].innerHTML
+    }
+
+    players[1].cells[1].innerHTML = total;
+
+    //TODO for each player
+
 } //also on new/delete player, or take/untake items
