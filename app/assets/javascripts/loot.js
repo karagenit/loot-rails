@@ -26,9 +26,10 @@ function masterNew(name, qty, value) {
     cactions.innerHTML = `
         <span class="input-group">
             <button type="button" class="btn btn-outline-danger btn-table"
-                onclick="removeRow(this)">Delete</button>
+                onclick="masterDelete(this)">Delete</button>
         </span>
     `;
+    updateBudgets();
 }
 
 function getStatusDropdown() {
@@ -56,6 +57,11 @@ function getStatusDropdown() {
 
     return select;
 } //TODO update all of these on player create/destroy
+
+function masterDelete(context) {
+    removeRow(context)
+    updateBudgets();
+}
 
 function clickPlayerNew() {
     var name = $("#player-new-name")[0].value
